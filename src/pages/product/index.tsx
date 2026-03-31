@@ -1,37 +1,53 @@
 import { useEffect, useState } from 'react';
+import styles from './product.module.css';
 
 type ProductType = 
 {
   id: string;
-  nama: string;
-  harga: number;
-  ukuran: string;
-  warna: string;
+  name: string;
+  price: number;
+  size: string;
+  category: string;
 }
 
 const kategori = () => {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+  const fetchProducts = () => {
+    setIsLoading(true);
     fetch("/api/produk")
       .then((response) => response.json())
       .then((responsedata) => {
         setProducts(responsedata.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching product:", error);
+        setIsLoading(false);
       })
+  };
+
+  useEffect(() => {
+    fetchProducts();
   }, []);
 
   return (
     <div>
-      <h1>Daftar Produk</h1>
+      <h1 className={styles.title}>Daftar Produk</h1>
+      <button 
+        onClick={fetchProducts}
+        disabled={isLoading}
+        className={styles.buttonRefresh}
+      >
+        {isLoading ? 'Memproses...' : 'Refresh Data'}
+      </button>
       {products.map((product:ProductType) => (
-        <div key={product.id}>
-          <h2>{product.nama}</h2>
-          <p>Harga: {product.harga}</p>
-          <p>Ukuran: {product.ukuran}</p>
-          <p>Warna: {product.warna}</p>
+        <div key={product.id} className={styles.productItem}>
+          <h2 className={styles.productName}>{product.name}</h2>
+          <p className={styles.productInfo}>Harga: {product.price}</p>
+          <p className={styles.productInfo}>Ukuran: {product.size}</p>
+          <p className={styles.productInfo}>Kategori: {product.category}</p>
         </div>
       ))}
     </div>
