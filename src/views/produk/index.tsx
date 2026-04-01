@@ -1,6 +1,6 @@
 import HeroSection from "./hero";
 import MainSection from "./main";
-import styles from "../../product/product.module.scss";
+import styles from "@/pages/product/product.module.scss";
 
 
 type ProductType = {
