@@ -1,13 +1,5 @@
-import { StringLiteral } from "typescript"
 import TampilanProduk from "../views/produk"
-
-type ProductType = {
-    id: string;
-    name: string;
-    price: number;
-    image: string;
-    category: string;
-};
+import {ProductType} from "../types/Product.type";
 
 const halamanProdukServer = (props: {products:ProductType[]}) => {
     const { products } = props;
