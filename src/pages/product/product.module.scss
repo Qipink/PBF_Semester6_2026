@@ -1,141 +1,90 @@
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes hoverScale {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.02);
-  }
-}
-
 .product {
-  width: 100%;
+  widht: 100%;
   padding: 0 5%;
-
   &__title {
     text-align: center;
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 16px;
-    animation: slideInUp 0.6s ease-out;
   }
-
   &__content {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    &__skeleton {
+      width: 200px;
+      padding: 16px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: identifier 1.5s infinite ease-in-out;
+      &__image {
+        width: 100%;
+        height: 200px;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+        margin-bottom: 12px;
+      }
+      &__name {
+        width: 80%;
+        height: 20px;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+        margin-bottom: 8px;
+      }
+      &__category {
+        width: 60%;
+        height: 16px;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+        margin-bottom: 8px;
+      }
+      &__price {
+        width: 40%;
+        height: 18px;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+      }
+    }
 
     &__item {
-      flex: 1 1 calc(25% - 15px);
-      min-width: 200px;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #f0f0f0;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      animation: fadeIn 0.5s ease-out forwards;
-      cursor: pointer;
-
-      &:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      &:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      &:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      &:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-      &:nth-child(5) {
-        animation-delay: 0.5s;
-      }
-      &:nth-child(6) {
-        animation-delay: 0.6s;
-      }
-      &:nth-child(n + 7) {
-        animation-delay: 0.7s;
-      }
-
-      &:hover {
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-        transform: translateY(-2px);
-      }
-
       &__image {
         width: 100%;
         height: 200px;
         object-fit: cover;
         border-radius: 4px;
         margin-bottom: 12px;
-        transition: transform 0.3s ease;
       }
-
-      &:hover &__image {
-        transform: scale(1.05);
-      }
-
       &__name {
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 8px;
-        color: #333;
-        line-height: 1.4;
       }
-
       &__price {
         font-size: 16px;
         color: #ff5722;
         font-weight: bold;
-        margin-bottom: 8px;
       }
-
       &__category {
         font-size: 14px;
         color: #888;
-        margin-bottom: 0;
+        margin-bottom: 8px;
       }
     }
+  }
+}
 
-    @media (max-width: 1200px) {
-      &__item {
-        flex: 1 1 calc(33.333% - 14px);
-      }
-    }
-
-    @media (max-width: 768px) {
-      &__item {
-        flex: 1 1 calc(50% - 10px);
-      }
-    }
-
-    @media (max-width: 480px) {
-      &__item {
-        flex: 1 1 100%;
-      }
-    }
+@keyframes identifier {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
