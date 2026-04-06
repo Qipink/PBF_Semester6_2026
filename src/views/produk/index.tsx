@@ -1,7 +1,7 @@
 import HeroSection from "./hero";
 import MainSection from "./main";
 import styles from "@/pages/product/product.module.scss";
-
+import Link from "next/link";
 
 type ProductType = {
   id: string;
@@ -18,14 +18,22 @@ const TampilanProduk = ({ products }: { products: ProductType[] }) => {
       <div className={styles.product__content}>
         {products.length > 0 ? (
           <>
-            {products.map((products: ProductType) => (
-              <div key={products.id} className={styles.product__content__item}>
-                <img src={products.image} alt={products.name} className={styles.product__content__item__image}/>
-                <p className={styles.product__content__item__category}>Kategori: {products.category}</p>
-                <h2 className={styles.product__content__item__name}>Nama: {products.name}</h2>
-                <p className={styles.product__content__item__price}>Harga: Rp. {products.price}</p>
+          {products.map((products: ProductType) => (
+            <Link href={`/product/${products.id}`} key={products.id} className={styles.product__content__item}>
+              <div className={styles.product__content__item__image}>
+                <img src={products.image} alt={products.name}/>
               </div>
-            ))}
+              <h4 className={styles.product__content__item__name}>
+                {products.name}
+              </h4>
+              <p className={styles.product__content__item__category}>
+                {products.category}
+              </p>
+              <p className={styles.product__content__item__price}>
+                Rp {products.price.toLocaleString("id-ID")}
+              </p>
+            </Link>
+          ))}
           </>
         ) : (
           <div className={styles.product__content__skeleton}>
