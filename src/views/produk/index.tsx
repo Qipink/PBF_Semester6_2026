@@ -18,22 +18,20 @@ const TampilanProduk = ({ products }: { products: ProductType[] }) => {
       <div className={styles.product__content}>
         {products.length > 0 ? (
           <>
-          {products.map((products: ProductType) => (
-            <Link href={`/product/${products.id}`} key={products.id} className={styles.product__content__item}>
-              <div className={styles.product__content__item__image}>
-                <img src={products.image} alt={products.name}/>
-              </div>
-              <h4 className={styles.product__content__item__name}>
-                {products.name}
-              </h4>
-              <p className={styles.product__content__item__category}>
-                {products.category}
-              </p>
-              <p className={styles.product__content__item__price}>
-                Rp {products.price.toLocaleString("id-ID")}
-              </p>
-            </Link>
-          ))}
+            {products.map((products: ProductType) => (
+              <Link href={`/product/${products.id}`} key={products.id} className={styles.product__content__item}>
+                <img className={styles.product__content__item__image} src={products.image} alt={products.name} />
+                <h4 className={styles.product__content__item__name}>
+                  {products.name}
+                </h4>
+                <p className={styles.product__content__item__category}>
+                  {products.category}
+                </p>
+                <p className={styles.product__content__item__price}>
+                  Rp {products.price.toLocaleString("id-ID")}
+                </p>
+              </Link>
+            ))}
           </>
         ) : (
           <div className={styles.product__content__skeleton}>
