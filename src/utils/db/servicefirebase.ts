@@ -2,7 +2,6 @@ import {
     getFirestore, 
     collection, 
     getDocs,
-    Firestore, 
     getDoc, 
     doc,
     query,
@@ -34,7 +33,6 @@ export async function signUp(
         email: string;
         fullname: string;
         password: string;
-        role?: string;
     },
     callback: Function,
 ) {
@@ -52,12 +50,18 @@ export async function signUp(
     if (data.length > 0) {
         callback({
             status: "error",
-            message: "User already exists",
+            message: "Email already exists",
         })
     } else {
-        userData.password = await bcrypt.hash(userData.password, 10);
-        userData.role = "user";
-        await addDoc(collection(db, "users"), userData)
+        const hashedPassword = await bcrypt.hash(userData.password, 10);
+        const payload = {
+            email: userData.email,
+            fullname: userData.fullname,
+            password: hashedPassword,
+            role: "member",
+        };
+
+        await addDoc(collection(db, "users"), payload)
             .then(() => {
                 callback({
                     status: "success",
