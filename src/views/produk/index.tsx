@@ -2,6 +2,7 @@ import HeroSection from "./hero";
 import MainSection from "./main";
 import styles from "@/pages/product/product.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 type ProductType = {
   id: string;
@@ -20,7 +21,10 @@ const TampilanProduk = ({ products }: { products: ProductType[] }) => {
           <>
             {products.map((products: ProductType) => (
               <Link href={`/product/${products.id}`} key={products.id} className={styles.product__content__item}>
-                <img className={styles.product__content__item__image} src={products.image} alt={products.name} />
+                <div className={styles.product__content__item__image}>
+                <Image src={products.image} alt={products.name} height={200} width={200}/>
+                </div>
+                {/* <img className={styles.product__content__item__image} src={products.image} alt={products.name} width={200} height={200} /> */}
                 <h4 className={styles.product__content__item__name}>
                   {products.name}
                 </h4>
