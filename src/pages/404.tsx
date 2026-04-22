@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "@/styles/404.module.scss";
 
 const Custom404 = () => {
@@ -8,7 +9,7 @@ const Custom404 = () => {
                 <title>404 - Not Found</title>
             </head>
             <div className={styles.error}>
-                <img
+                <Image
                     src="/page-not-found.svg"
                     alt="404"
                     width={400}

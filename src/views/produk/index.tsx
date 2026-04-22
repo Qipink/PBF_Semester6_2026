@@ -24,7 +24,6 @@ const TampilanProduk = ({ products }: { products: ProductType[] }) => {
                 <div className={styles.product__content__item__image}>
                 <Image src={products.image} alt={products.name} height={200} width={200}/>
                 </div>
-                {/* <img className={styles.product__content__item__image} src={products.image} alt={products.name} width={200} height={200} /> */}
                 <h4 className={styles.product__content__item__name}>
                   {products.name}
                 </h4>
