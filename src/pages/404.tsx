@@ -10,7 +10,9 @@ const Custom404 = () => {
             <div className={styles.error}>
                 <img
                     src="/page-not-found.svg"
-                    alt="404 Not Found"
+                    alt="404"
+                    width={400}
+                    height={200}
                     className={styles.error_image}
                 />
 
