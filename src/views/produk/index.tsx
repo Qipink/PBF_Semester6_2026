@@ -15,7 +15,7 @@ type ProductType = {
 const TampilanProduk = ({ products }: { products: ProductType[] }) => {
   return (
     <div className={styles.product}>
-      <h1 className={styles.product__title}>Daftar Produk</h1>
+      <h1 className={styles.product__title} data-testid="title">Daftar Produk</h1>
       <div className={styles.product__content}>
         {products.length > 0 ? (
           <>

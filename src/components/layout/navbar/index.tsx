@@ -6,7 +6,7 @@ const Navbar = () => {
     const { data }: any = useSession();
     return (
         <div className={styles.navbar}>
-            <div className={styles.navbar__brand}>MyApp</div>
+            <div className={styles.navbar__brand} data-testid="navbar-brand">MyApp</div>
             <div className={styles.navbar__right}>
                 {data ? (
                     <>
