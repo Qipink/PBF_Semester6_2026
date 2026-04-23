@@ -124,9 +124,8 @@ const Tampilanlogin = () => {
                             type="button"
                             onClick={() => signIn("github", { callbackUrl, redirect: false })}
                             className={styles.login__form__item__button}
-                            disabled={isLoading}
                         >
-                            {isLoading ? "Loading..." : "Login with GitHub"}
+                            Sign in with GitHub
                         </button>
                     </form>
                     <br />
