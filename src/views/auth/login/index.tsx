@@ -116,9 +116,8 @@ const Tampilanlogin = () => {
                             type="button"
                             onClick={() => signIn("google", { callbackUrl, redirect: false })}
                             className={styles.login__form__item__button}
-                            disabled={isLoading}
                         >
-                            {isLoading ? "Loading..." : "Login with Google"}
+                            Sign in with Google
                         </button>
                         <br /><br />
                         <button
